@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2bof7wb2adls"]
+
+[ext_resource type="Script" path="res://pause.gd" id="1_ogpuo"]
+[ext_resource type="Script" path="res://continue.gd" id="1_whyho"]
+
+[node name="pause" type="CanvasLayer"]
+
+[node name="pause" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ogpuo")
+
+[node name="ColorRect" type="ColorRect" parent="pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.411765)
+
+[node name="continue" type="Button" parent="pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.5
+offset_top = -59.0
+offset_right = 115.5
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+script = ExtResource("1_whyho")
+
+[node name="quit" type="Button" parent="pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.5
+offset_top = 14.0
+offset_right = 115.5
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[connection signal="resized" from="pause" to="pause" method="_on_resized"]
+[connection signal="pressed" from="pause/continue" to="pause" method="_on_continue_pressed"]
+[connection signal="pressed" from="pause/quit" to="pause" method="_on_quit_pressed"]

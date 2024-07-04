@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8iynjd6vh2jy"]
+
+[ext_resource type="Texture2D" uid="uid://yesnl2wu1cob" path="res://assets/bangunan/cerobong4x4.png" id="1_dpkct"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ahy8"]
+size = Vector2(65, 134)
+
+[node name="cerobong" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4, -71)
+scale = Vector2(0.2975, 0.335938)
+texture = ExtResource("1_dpkct")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4.5, -71)
+shape = SubResource("RectangleShape2D_3ahy8")

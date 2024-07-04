@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn5mu5a72qpwv"]
+
+[ext_resource type="Script" path="res://scripts/finish.gd" id="1_kcuqd"]
+[ext_resource type="Texture2D" uid="uid://bj5xbtkhmu0vy" path="res://assets/bangunan/Proyek Baru.png" id="1_lvmu8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vijcf"]
+size = Vector2(25, 74)
+
+[node name="finish" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_kcuqd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -134)
+scale = Vector2(1.33438, 1.28194)
+texture = ExtResource("1_lvmu8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -51)
+shape = SubResource("RectangleShape2D_vijcf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

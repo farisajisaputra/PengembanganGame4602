@@ -1,0 +1,182 @@
+[gd_scene load_steps=18 format=3 uid="uid://du0hr6vxkkuin"]
+
+[ext_resource type="Script" path="res://scripts/pisang.gd" id="1_wx76v"]
+[ext_resource type="Texture2D" uid="uid://b73j51qrvs70i" path="res://assets/karakter/pisang3.png" id="1_xpugo"]
+[ext_resource type="AudioStream" uid="uid://bbjy2s2kd2mru" path="res://assets/Audio/koin.mp3" id="3_d71jg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j47iq"]
+atlas = ExtResource("1_xpugo")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra6xs"]
+atlas = ExtResource("1_xpugo")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1b2q"]
+atlas = ExtResource("1_xpugo")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aykkd"]
+atlas = ExtResource("1_xpugo")
+region = Rect2(150, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgwfb"]
+atlas = ExtResource("1_xpugo")
+region = Rect2(200, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3we6"]
+atlas = ExtResource("1_xpugo")
+region = Rect2(250, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wchio"]
+atlas = ExtResource("1_xpugo")
+region = Rect2(300, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl0o5"]
+atlas = ExtResource("1_xpugo")
+region = Rect2(350, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_12sbr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j47iq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra6xs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1b2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aykkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgwfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3we6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wchio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl0o5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4p6hy"]
+radius = 24.0
+
+[sub_resource type="Animation" id="Animation_7tm51"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("poin:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_2then"]
+resource_name = "pickup"
+
+[sub_resource type="Animation" id="Animation_pvqrk"]
+resource_name = "pickupp"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("poin:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0ekon"]
+_data = {
+"RESET": SubResource("Animation_7tm51"),
+"pickup": SubResource("Animation_2then"),
+"pickupp": SubResource("Animation_pvqrk")
+}
+
+[node name="pisang" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_wx76v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_12sbr")
+autoplay = "default"
+frame_progress = 0.369053
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4p6hy")
+
+[node name="poin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_d71jg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0ekon")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

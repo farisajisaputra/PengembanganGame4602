@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://lti4sdvr0mok"]
+
+[ext_resource type="Texture2D" uid="uid://cxt60aheq6mu5" path="res://assets/karakter/ramuan1.png" id="1_508ie"]
+[ext_resource type="Script" path="res://scripts/ramuanspeed.gd" id="1_iu70k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_va4cj"]
+size = Vector2(20, 51)
+
+[node name="ramuanspeed" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_iu70k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7, -28)
+scale = Vector2(0.0671429, 0.0643333)
+texture = ExtResource("1_508ie")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -28.5)
+shape = SubResource("RectangleShape2D_va4cj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
